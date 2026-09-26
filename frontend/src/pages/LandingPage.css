@@ -1,0 +1,19 @@
+div{
+    padding: 50px;
+    align-content: center;
+}
+
+button{
+    border-style:none;
+    background-color: #0041a6;
+    border-radius: 10px;
+    width:351px;
+    height: 38px;
+}
+
+button span {
+    position: absolute;
+    color:white;
+    font-weight:bold;
+    transform: translate(-50%, -50%);
+}
