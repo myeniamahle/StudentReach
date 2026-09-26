@@ -64,6 +64,44 @@ app.patch('/api/flags/:id/status', async (req,res) => {
   finally { client.release(); }
 });
 
+// ---- Student messaging routes (Mmanga) ----
+const { triggerMessageForFlag } = require("./messageTrigger");
+const { handleReply } = require("./replyHandler");
+
+// GET messages for a student (student app chat screen)
+app.get("/students/:id/messages", async (req, res) => {
+    const { pool } = require("./db");
+    const { rows } = await pool.query(
+        `SELECT id, message_text, sent_at, status
+     FROM messages_log
+     WHERE student_id = $1 AND status = 'sent'
+     ORDER BY sent_at ASC`,
+        [req.params.id]
+    );
+    res.json(rows.map(r => ({ id: r.id, sender: "advisor", text: r.message_text })));
+});
+
+// POST reply from student
+app.post("/students/:id/replies", async (req, res) => {
+    try {
+        const { reply_code, reply_text } = req.body;
+        const result = await handleReply(req.params.id, reply_code, reply_text);
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// POST manually trigger a message for a flag (for demo/testing)
+app.post("/flags/:id/trigger-message", async (req, res) => {
+    const { pool } = require("./db");
+    const { rows: [flag] } = await pool.query(`SELECT * FROM flags WHERE id = $1`, [req.params.id]);
+    if (!flag) return res.status(404).json({ error: "flag not found" });
+    const log = await triggerMessageForFlag(flag);
+    res.json({ ok: !!log, log });
+});
+
 const port = process.env.PORT || 4000;
 if (require.main === module) app.listen(port, () => console.log(`StudentReach API listening on http://localhost:${port}`));
 module.exports = app;
