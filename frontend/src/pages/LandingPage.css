@@ -1,9 +1,9 @@
-div{
+.LandingPage-div{
     padding: 50px;
     align-content: center;
 }
 
-button{
+.LandingPage-btn{
     border-style:none;
     background-color: #0041a6;
     border-radius: 10px;
@@ -11,7 +11,7 @@ button{
     height: 38px;
 }
 
-button span {
+.LandingPage-btn span {
     position: absolute;
     color:white;
     font-weight:bold;
