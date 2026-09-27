@@ -7,13 +7,13 @@ const RULES = Object.freeze({
 });
 
 function average(values) {
-  return values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+  return values.length ? values.reduce((sum, value) => sum + Number(value), 0) / values.length : 0;
 }
 
 function attendanceDrop(student) {
   const rows = [...student.attendance].sort((a,b) => new Date(a.periodStart)-new Date(b.periodStart));
   if (rows.length < 2) return null;
-  const current = rows.at(-1).attendancePercent;
+  const current = Number(rows.at(-1).attendancePercent);
   const baseline = average(rows.slice(-5, -1).map(r => r.attendancePercent));
   if (!baseline) return null;
   const drop = ((baseline - current) / baseline) * 100;

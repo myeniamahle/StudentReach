@@ -1,0 +1,155 @@
+.advisor-page {
+  width: min(100% - 32px, 860px);
+  margin: 0 auto;
+  padding: 36px 0 64px;
+  color: #18312b;
+  text-align: left;
+}
+
+.advisor-header,
+.advisor-flag-heading,
+.advisor-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.advisor-header {
+  align-items: flex-end;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dce7e1;
+}
+
+.advisor-header h1 {
+  margin: 4px 0 8px;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.advisor-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.advisor-header p,
+.advisor-flag-heading p,
+.advisor-measure {
+  margin: 0;
+  color: #65766e;
+  font-size: 14px;
+}
+
+.advisor-eyebrow,
+.advisor-rule {
+  color: #187457 !important;
+  font-size: 12px !important;
+  font-weight: 700;
+}
+
+.advisor-link,
+.advisor-actions a {
+  color: #126448;
+  font-weight: 650;
+}
+
+.advisor-notice,
+.advisor-error,
+.advisor-empty {
+  margin: 20px 0;
+  padding: 14px 16px;
+  background: #edf6ef;
+  border-left: 3px solid #23865e;
+}
+
+.advisor-error {
+  color: #8b2525;
+  background: #fff0ee;
+  border-color: #c84235;
+}
+
+.advisor-list {
+  display: grid;
+  gap: 14px;
+  padding-top: 20px;
+}
+
+.advisor-flag {
+  padding: 20px;
+  border: 1px solid #dce7e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.advisor-flag h2 {
+  margin: 0 0 4px;
+  color: #18312b;
+  font-size: 18px;
+}
+
+.advisor-priority {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #fff1d7;
+  color: #815300;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.advisor-priority--high {
+  background: #fde6e3;
+  color: #a52e25;
+}
+
+.advisor-rule {
+  margin: 16px 0 6px;
+  text-transform: capitalize;
+}
+
+.advisor-reason {
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.advisor-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.advisor-actions button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #176c4f;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.advisor-actions .advisor-dismiss {
+  border: 1px solid #bdc9c2;
+  background: #fff;
+  color: #344b40;
+}
+
+@media (max-width: 600px) {
+  .advisor-page {
+    width: min(100% - 24px, 860px);
+    padding-top: 24px;
+  }
+
+  .advisor-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .advisor-flag {
+    padding: 16px;
+  }
+}

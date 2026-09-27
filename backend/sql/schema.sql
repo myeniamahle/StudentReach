@@ -2,6 +2,9 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 DROP TABLE IF EXISTS advisor_reviews, message_log, detection_flags, engagement_records,
   funding_status_history, assignments, attendance_records, students CASCADE;
+DROP TYPE IF EXISTS funding_status CASCADE;
+
+CREATE TYPE funding_status AS ENUM ('active','approved','pending','unresolved');
 
 CREATE TABLE students (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -35,7 +38,7 @@ CREATE TABLE assignments (
 CREATE TABLE funding_status_history (
   id BIGSERIAL PRIMARY KEY,
   student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
-  status VARCHAR(20) NOT NULL CHECK (status IN ('active','approved','pending','unresolved')),
+  status funding_status NOT NULL,
   effective_at TIMESTAMPTZ NOT NULL,
   UNIQUE(student_id, effective_at)
 );
@@ -65,8 +68,12 @@ CREATE TABLE message_log (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
   flag_id UUID REFERENCES detection_flags(id) ON DELETE SET NULL,
+  channel VARCHAR(20) NOT NULL DEFAULT 'in_app' CHECK (channel IN ('in_app')),
   message_text TEXT NOT NULL,
   sent_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  status VARCHAR(20) NOT NULL CHECK (status IN ('sent','received')),
+  reply_code SMALLINT CHECK (reply_code BETWEEN 1 AND 4),
+  reply_category VARCHAR(40),
   reply_text TEXT
 );
 

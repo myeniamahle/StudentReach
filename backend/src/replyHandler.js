@@ -23,10 +23,10 @@ async function handleReply(studentId, replyCode, replyText) {
     }
 
     const { rows: [log] } = await pool.query(
-        `INSERT INTO messages_log (student_id, channel, message_text, sent_at, status)
-     VALUES ($1, 'in_app', $2, NOW(), 'received')
+          `INSERT INTO message_log (student_id, channel, message_text, sent_at, status, reply_code, reply_category)
+      VALUES ($1, 'in_app', $2, NOW(), 'received', $3, $4)
      RETURNING *`,
-        [studentId, `[reply ${replyCode}:${category}] ${replyText || ""}`]
+          [studentId, replyText || `[reply ${replyCode}]`, replyCode, category]
     );
 
     return { ok: true, code: replyCode, category, confidence, log };

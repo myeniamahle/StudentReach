@@ -3,6 +3,7 @@
 .Dashboard-page {
   min-height: 100vh;
   width: 100%;
+  min-width: 0;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -31,6 +32,24 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
+}
+
+.Dashboard-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.Dashboard-nav-link {
+  color: #176c4f;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Dashboard-nav-link:hover {
+  text-decoration: underline;
 }
 
 .Dashboard-navbar-logo {
@@ -279,7 +298,8 @@
 
 .Dashboard-mood-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  min-width: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -318,7 +338,7 @@
 
 .Dashboard-stressor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
   gap: 8px;
 }
 
@@ -570,6 +590,19 @@
 
 /* Small phones: tighten the 4-up mood row so it doesn't cramp */
 @media (max-width: 360px) {
+  .Dashboard-navbar {
+    gap: 8px;
+    padding-inline: 12px;
+  }
+
+  .Dashboard-navbar-actions {
+    gap: 7px;
+  }
+
+  .Dashboard-nav-link {
+    font-size: 11px;
+  }
+
   .Dashboard-mood-row {
     gap: 6px;
   }
@@ -599,20 +632,25 @@
 /* Desktop */
 @media (min-width: 1024px) {
   .Dashboard-page {
-    align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
   }
 
   .Dashboard-navbar,
-  .Dashboard-hero-content,
   .Dashboard-tab-row,
   .Dashboard-card,
   .Dashboard-history-heading,
   .Dashboard-history-list {
-    max-width: 520px;
+    max-width: 920px;
+  }
+
+  .Dashboard-hero-content {
+    max-width: 920px;
+    padding-inline: 24px;
   }
 
   .Dashboard-submit-button,
   .Dashboard-support-card {
-    max-width: 488px;
+    max-width: 888px;
   }
 }

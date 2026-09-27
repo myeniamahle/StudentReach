@@ -53,15 +53,29 @@ app.patch('/api/flags/:id/status', async (req,res) => {
   const { status, advisorName='Demo Advisor', notes=null } = req.body;
   if (!['approved','dismissed','resolved'].includes(status)) return res.status(400).json({error:'status must be approved, dismissed, or resolved'});
   const client = await pool.connect();
+  let flag;
   try {
     await client.query('BEGIN');
     const result = await client.query('UPDATE detection_flags SET status=$1 WHERE id=$2 RETURNING *',[status,req.params.id]);
     if (!result.rows[0]) { await client.query('ROLLBACK'); return res.status(404).json({error:'Flag not found'}); }
     await client.query('INSERT INTO advisor_reviews(flag_id,advisor_name,decision,notes) VALUES($1,$2,$3,$4)',[req.params.id,advisorName,status,notes]);
     await client.query('COMMIT');
-    res.json(result.rows[0]);
-  } catch(e) { await client.query('ROLLBACK'); res.status(500).json({error:e.message}); }
+    flag = result.rows[0];
+  } catch(e) {
+    await client.query('ROLLBACK');
+    return res.status(500).json({error:e.message});
+  }
   finally { client.release(); }
+
+  let message = null;
+  if (status === 'approved') {
+    try {
+      message = await triggerMessageForFlag(flag);
+    } catch(e) {
+      return res.status(500).json({error:'Flag approved, but the student message could not be logged.', flag});
+    }
+  }
+  res.json({...flag, message});
 });
 
 // ---- Student messaging routes (Mmanga) ----
@@ -72,8 +86,8 @@ const { handleReply } = require("./replyHandler");
 app.get("/students/:id/messages", async (req, res) => {
     const { pool } = require("./db");
     const { rows } = await pool.query(
-        `SELECT id, message_text, sent_at, status
-     FROM messages_log
+          `SELECT id, message_text, sent_at, status
+        FROM message_log
      WHERE student_id = $1 AND status = 'sent'
      ORDER BY sent_at ASC`,
         [req.params.id]
@@ -96,8 +110,9 @@ app.post("/students/:id/replies", async (req, res) => {
 // POST manually trigger a message for a flag (for demo/testing)
 app.post("/flags/:id/trigger-message", async (req, res) => {
     const { pool } = require("./db");
-    const { rows: [flag] } = await pool.query(`SELECT * FROM flags WHERE id = $1`, [req.params.id]);
+    const { rows: [flag] } = await pool.query(`SELECT * FROM detection_flags WHERE id = $1`, [req.params.id]);
     if (!flag) return res.status(404).json({ error: "flag not found" });
+  if (flag.status !== 'approved') return res.status(409).json({ error: "flag must be approved before messaging the student" });
     const log = await triggerMessageForFlag(flag);
     res.json({ ok: !!log, log });
 });

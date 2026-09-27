@@ -6,15 +6,15 @@ function LandingPage() {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <img src={logo} alt="StudentReach logo" />
+        <main className="landing-page">
+            <img className="landing-logo" src={logo} alt="StudentReach logo" />
 
-            <div>
-                <button onClick={() => navigate("/login")}>
+            <div className="landing-action">
+                <button className="landing-next" onClick={() => navigate("/login")}>
                     <span>NEXT</span>
                 </button>
             </div>
-        </div>
+        </main>
     );
 }
 
