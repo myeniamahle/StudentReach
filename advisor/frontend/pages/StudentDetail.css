@@ -1,0 +1,127 @@
+/* StudentDetail.css */
+
+.student-detail {
+  min-height: 100vh;
+  background: #f4f5f7;
+  padding: 32px clamp(16px, 5vw, 48px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111827;
+}
+
+.student-detail > button:first-child {
+  background: transparent;
+  border: none;
+  color: #0b2a6b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.student-detail h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2a6b;
+  margin: 0 0 4px;
+}
+
+.student-detail .student-meta {
+  color: #6b7280;
+  margin: 0 0 24px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  min-width: 160px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b2a6b;
+}
+
+.flags-section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.flag-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f2f4;
+  font-size: 14px;
+}
+
+.flag-item:last-child {
+  border-bottom: none;
+}
+
+.action-row {
+  margin-bottom: 24px;
+}
+
+.report-button {
+  background: #b91c1c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.section h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0b2a6b;
+  margin: 0 0 12px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-list li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.history-list li:last-child {
+  border-bottom: none;
+}

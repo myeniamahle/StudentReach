@@ -6,18 +6,18 @@ from fake_data import ADVISORS
 
 router = APIRouter()
 
+
 class LoginRequest(BaseModel):
     email: str
     password: str
+
 
 @router.post("/login")
 async def login(data: LoginRequest):
     """
     Check email and password.
-    Return a fake token + role if valid.
-    The frontend will save this token in localStorage.
+    Return a fake token + role + programme (for lecturers).
     """
-    # Find the advisor by email
     advisor = next((a for a in ADVISORS if a["email"] == data.email), None)
 
     if not advisor:
@@ -26,9 +26,9 @@ async def login(data: LoginRequest):
     if advisor["password"] != data.password:
         raise HTTPException(status_code=401, detail="Wrong password")
 
-    # Return token (fake for demo — real JWT comes later)
     return {
         "token": f"fake-token-{advisor['id']}-{advisor['role']}",
         "role": advisor["role"],
-        "email": advisor["email"]
+        "email": advisor["email"],
+        "programme": advisor.get("programme"),  # None for advisor/admin
     }

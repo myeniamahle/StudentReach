@@ -10,8 +10,11 @@ import type { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api";
 
+type Tab = "student" | "lecturer" | "admin";
+
 function LoginPage() {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<Tab>("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,13 +27,40 @@ function LoginPage() {
 
     try {
       const data = await login(email, password);
+
+      // Validate that the user picked the right tab
+      const roleMatchesTab =
+        (activeTab === "student" && data.role === "student") ||
+        (activeTab === "lecturer" && data.role === "lecturer") ||
+        (activeTab === "admin" && data.role === "admin") ||
+        // Demo tolerances: advisors are allowed via any tab
+        data.role === "advisor";
+
+      if (!roleMatchesTab && data.role !== "advisor") {
+        setError(
+          `This account is not a ${activeTab}. Try the ${
+            data.role === "lecturer" ? "Lecturer" : data.role === "student" ? "Student" : "Admin"
+          } tab.`
+        );
+        setBusy(false);
+        return;
+      }
+
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
+      if (data.programme) {
+        localStorage.setItem("programme", data.programme);
+      }
 
       if (data.role === "advisor") {
         navigate("/advisor/dashboard");
+      } else if (data.role === "lecturer") {
+        navigate("/lecturer/dashboard");
+      } else if (data.role === "student") {
+        // Student dashboard not built yet — fall back to advisor for demo
+        navigate("/advisor/dashboard");
       } else {
-        navigate("/advisor/dashboard"); // fallback for demo
+        navigate("/advisor/dashboard");
       }
     } catch (err: unknown) {
       const response = (err as {
@@ -56,13 +86,37 @@ function LoginPage() {
         <h2 className="Login-sign-in-heading">SIGN INTO YOUR ACCOUNT</h2>
 
         <div className="Login-tab-group">
-          <button type="button" className="Login-tab-button Login-tab-button--active">
+          <button
+            type="button"
+            className={
+              activeTab === "student"
+                ? "Login-tab-button Login-tab-button--active"
+                : "Login-tab-button"
+            }
+            onClick={() => setActiveTab("student")}
+          >
             Student
           </button>
-          <button type="button" className="Login-tab-button">
+          <button
+            type="button"
+            className={
+              activeTab === "lecturer"
+                ? "Login-tab-button Login-tab-button--active"
+                : "Login-tab-button"
+            }
+            onClick={() => setActiveTab("lecturer")}
+          >
             Lecturer
           </button>
-          <button type="button" className="Login-tab-button">
+          <button
+            type="button"
+            className={
+              activeTab === "admin"
+                ? "Login-tab-button Login-tab-button--active"
+                : "Login-tab-button"
+            }
+            onClick={() => setActiveTab("admin")}
+          >
             Admin
           </button>
         </div>
@@ -106,10 +160,18 @@ function LoginPage() {
         </div>
 
         <div className="Login-social-row">
-          <button type="button" className="Login-social-button" aria-label="Continue with Google">
+          <button
+            type="button"
+            className="Login-social-button"
+            aria-label="Continue with Google"
+          >
             <img src={google} alt="" />
           </button>
-          <button type="button" className="Login-social-button" aria-label="Continue with Apple">
+          <button
+            type="button"
+            className="Login-social-button"
+            aria-label="Continue with Apple"
+          >
             <img src={apple} alt="" />
           </button>
         </div>

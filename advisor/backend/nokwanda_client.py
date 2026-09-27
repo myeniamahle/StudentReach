@@ -40,3 +40,12 @@ async def health_check():
     async with httpx.AsyncClient(timeout=5.0) as client:
         response = await client.get(f"{NOKWANDA_API}/health")
         return response.json()
+
+# --- Lecturer-specific queries (direct DB access via Nokwanda's API) ---
+
+async def fetch_all_students():
+    """Fetch all students."""
+    async with httpx.AsyncClient(timeout=10.0) as client:
+        response = await client.get(f"{NOKWANDA_API}/students")
+        response.raise_for_status()
+        return response.json() 
