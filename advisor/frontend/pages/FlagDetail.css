@@ -1,0 +1,88 @@
+/* FlagDetail.css — single flag detail view */
+
+.flag-detail {
+  min-height: 100vh;
+  background: #f4f5f7;
+  padding: 32px clamp(16px, 5vw, 48px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111827;
+}
+
+.flag-detail > button:first-child {
+  background: transparent;
+  border: none;
+  color: #0b2a6b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 16px;
+}
+
+.flag-detail > button:first-child:hover {
+  text-decoration: underline;
+}
+
+.flag-detail h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2a6b;
+  margin: 0 0 24px;
+}
+
+.flag-detail > p {
+  background: #ffffff;
+  padding: 14px 20px;
+  margin: 0 0 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  display: flex;
+  gap: 8px;
+}
+
+.flag-detail > p strong {
+  color: #6b7280;
+  min-width: 120px;
+  font-weight: 600;
+}
+
+.flag-detail .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.flag-detail .actions button {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.flag-detail .actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.flag-detail .actions button.approve {
+  background: #0b2a6b;
+  color: #ffffff;
+}
+
+.flag-detail .actions button.dismiss {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.flag-detail .actions button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.flag-detail > p:first-of-type {
+  margin-top: 24px;
+}

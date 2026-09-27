@@ -1,0 +1,44 @@
+/* Resource.css — guidance content page */
+
+.resource {
+  min-height: 100vh;
+  background: #f4f5f7;
+  padding: 32px clamp(16px, 5vw, 48px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resource > button:first-child {
+  background: transparent;
+  border: none;
+  color: #0b2a6b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.resource h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2a6b;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.resource p {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 24px 28px;
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
