@@ -5,8 +5,11 @@ import l_icon from "../components/lock-icon.svg";
 import google from "../components/google icon.svg";
 import apple from "../components/apple icon.svg";
 import w_logo from "../components/wordlogo.svg";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="Login-page">
       <img src="/full_logo.svg" alt="sr logo" className="Login-top-logo" />
@@ -46,7 +49,7 @@ function LoginPage() {
             <input type="password" placeholder="Enter Your Password" className="Login-input" />
           </div>
 
-          <button type="submit" className="Login-button">
+          <button type="submit" className="Login-button" onClick={() => navigate("/register")}>
             LOGIN
           </button>
         </form>

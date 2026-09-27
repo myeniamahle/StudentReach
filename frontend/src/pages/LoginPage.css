@@ -1,4 +1,4 @@
-
+/* LoginPage.css */
 
 .Login-page {
   min-height: 100vh;
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 16px 40px;
+  padding: clamp(16px, 5vw, 32px) 16px clamp(24px, 6vw, 48px);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
@@ -15,6 +15,7 @@
 .Login-top-logo {
   height: 24px;
   margin-bottom: 20px;
+  max-width: 100%;
 }
 
 .Login-brand-accent {
@@ -28,7 +29,7 @@
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   border: 1px solid #f1f2f4;
-  padding: 32px 24px 28px;
+  padding: clamp(24px, 6vw, 32px) clamp(18px, 5vw, 24px) 28px;
   box-sizing: border-box;
 }
 
@@ -36,11 +37,12 @@
   display: block;
   height: 64px;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .Login-card-title {
   text-align: center;
-  font-size: 22px;
+  font-size: clamp(20px, 5vw, 22px);
   font-weight: 800;
   color: #111827;
   margin: 16px 0 4px;
@@ -58,7 +60,7 @@
   text-align: center;
   font-size: 15px;
   font-weight: 700;
-  color: #0041a6;
+  color: #0b2a6b;
   letter-spacing: 0.3px;
   margin: 0 0 16px;
 }
@@ -66,7 +68,7 @@
 .Login-tab-group {
   display: flex;
   background: #f4f5f7;
-  border-radius: 9px;
+  border-radius: 999px;
   padding: 4px;
   margin-bottom: 20px;
 }
@@ -74,7 +76,7 @@
 .Login-tab-button {
   flex: 1;
   border: none;
-  border-radius: 10px;
+  border-radius: 999px;
   padding: 10px 0;
   font-size: 13px;
   font-weight: 500;
@@ -85,7 +87,7 @@
 }
 
 .Login-tab-button--active {
-  background: #0041a6;
+  background: #0b2a6b;
   color: #ffffff;
   font-weight: 600;
 }
@@ -98,6 +100,8 @@
   border-radius: 10px;
   padding: 13px 14px;
   margin-bottom: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .Login-input-icon {
@@ -110,14 +114,15 @@
   border: none;
   outline: none;
   flex: 1;
+  min-width: 0;
   font-size: 14px;
-  color:#0041a6;
+  color: #111827;
   background: transparent;
 }
 
 .Login-button {
   width: 100%;
-  background: #0041a6;
+  background: #0b2a6b;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -137,7 +142,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 1px;
+  margin: 22px 0 16px;
 }
 
 .Login-divider-line {
@@ -156,6 +161,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .Login-social-button {
@@ -183,6 +189,9 @@
   margin-top: 56px;
   text-align: center;
   max-width: 320px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .Login-crisis-title {
@@ -197,4 +206,24 @@
   color: #9098a3;
   line-height: 1.6;
   margin: 0;
+}
+
+/* Tablet and up: give the card a little more breathing room */
+@media (min-width: 640px) {
+  .Login-card-container {
+    max-width: 400px;
+  }
+}
+
+/* Desktop: center everything vertically too, card stays a fixed comfortable width */
+@media (min-width: 1024px) {
+  .Login-page {
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .Login-card-container {
+    max-width: 420px;
+  }
 }

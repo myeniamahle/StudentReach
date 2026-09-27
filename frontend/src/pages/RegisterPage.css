@@ -1,0 +1,432 @@
+/* RegisterPage.css */
+
+.register-card-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #f1f2f4;
+}
+
+.Register-page {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(16px, 5vw, 32px) 16px clamp(24px, 6vw, 48px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Logo / wordmark / subtitle (reused from Login) */
+
+.Login-card-logo {
+  display: block;
+  height: 64px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.Login-card-title {
+  display: block;
+  height: 22px;
+  margin: 16px auto 4px;
+  max-width: 100%;
+}
+
+.Login-card-subtitle {
+  text-align: center;
+  font-size: 12px;
+  color: #9098a3;
+  margin: 0 0 20px;
+  line-height: 1.4;
+}
+
+/* Register-specific heading */
+
+.Register-title {
+  text-align: center;
+  font-size: clamp(18px, 5vw, 20px);
+  font-weight: 800;
+  color: #0b2a6b;
+  letter-spacing: 0.3px;
+  margin: 8px 0 4px;
+}
+
+.Register-subtitle {
+  text-align: center;
+  font-size: 12px;
+  color: #9098a3;
+  margin: 0 0 20px;
+}
+
+/* Tabs */
+
+.Register-tab-group {
+  width: 100%;
+  display: flex;
+  background: #f4f5f7;
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.Register-tab-button {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5b6472;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.Register-tab-button--active {
+  background: #0b2a6b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Form */
+
+.Register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Register-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin: 14px 0 6px;
+}
+
+.Register-input-wrapper,
+.Register-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f4f5f7;
+  border: 1px solid #eceef1;
+  border-radius: 10px;
+  padding: 13px 14px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.Register-input-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.Register-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: #111827;
+  background: transparent;
+}
+
+.Register-input::placeholder {
+  color: #a0a7b2;
+}
+
+.Register-eye-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* Select */
+
+.Register-select {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  appearance: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.Register-chevron-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* Password strength */
+
+.Register-strength-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.Register-strength-bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.Register-strength-bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: #e5e7eb;
+}
+
+.Register-strength-bar--filled {
+  background: #16a34a;
+}
+
+.Register-strength-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #16a34a;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.Register-strength-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Consent */
+
+.Register-consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  background: #f4f5f7;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Register-checkbox {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: #0b2a6b;
+}
+
+.Register-consent-text {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #5b6472;
+}
+
+.Register-consent-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2e6fe0;
+  text-decoration: none;
+}
+
+.Register-consent-link:hover {
+  text-decoration: underline;
+}
+
+/* Submit */
+
+.Register-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: #0b2a6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.Register-submit-button:hover {
+  background: #0a2456;
+}
+
+.Register-submit-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+/* Divider */
+
+.Register-divider-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 16px;
+}
+
+.Register-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.Register-divider-text {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #9098a3;
+  white-space: nowrap;
+}
+
+/* Social buttons */
+
+.Register-social-row {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.Register-social-button {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 12px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+.Register-social-button:hover {
+  background: #f9fafb;
+}
+
+.Register-social-button img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Sign in row */
+
+.Register-signin-row {
+  font-size: 12.5px;
+  color: #5b6472;
+  margin: 20px 0 12px;
+  text-align: center;
+}
+
+.Register-signin-row a {
+  color: #2e6fe0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.Register-signin-row a:hover {
+  text-decoration: underline;
+}
+
+/* Security note */
+
+.Register-security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #16a34a;
+  margin: 0 0 32px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.Register-security-icon {
+  width: 13px;
+  height: 13px;
+}
+
+/* Crisis footer */
+
+.Register-crisis-footer {
+  text-align: center;
+  max-width: 320px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.Register-crisis-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.Register-crisis-text {
+  font-size: 12px;
+  color: #9098a3;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  .Register-page {
+    max-width: 420px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .register-card-container {
+    align-items: center;
+    padding: 40px 0;
+  }
+
+  .Register-page {
+    max-width: 460px;
+  }
+}
