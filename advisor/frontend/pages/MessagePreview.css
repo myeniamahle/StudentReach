@@ -1,0 +1,90 @@
+/* MessagePreview.css — chat bubble draft message */
+
+.message-preview {
+  min-height: 100vh;
+  background: #f4f5f7;
+  padding: 32px clamp(16px, 5vw, 48px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-preview h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0b2a6b;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.message-preview .chat-bubble {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 24px 28px;
+  max-width: 520px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.message-preview .chat-bubble p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111827;
+  margin: 0 0 20px;
+}
+
+.message-preview .reply-option {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f4f5f7;
+  color: #0b2a6b;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.message-preview .reply-option:hover {
+  background: #0b2a6b;
+  color: #ffffff;
+  border-color: #0b2a6b;
+}
+
+.message-preview .reply-options span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f4f5f7;
+  color: #0b2a6b;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+}
+
+.message-preview > button {
+  background: #0b2a6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: opacity 0.15s ease;
+}
+
+.message-preview > button:hover {
+  opacity: 0.9;
+}
