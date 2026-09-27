@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .landing-page {
     min-height: 100vh;
     display: grid;
@@ -15,6 +16,14 @@
 }
 
 .landing-next {
+=======
+.LandingPage-div{
+    padding: 50px;
+    align-content: center;
+}
+
+.LandingPage-btn{
+>>>>>>> c83ab30d45a6693c9606a69de5c8e69b48394b60
     border-style:none;
     background-color: #0041a6;
     border-radius: 10px;
@@ -24,7 +33,12 @@
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 .landing-next span {
+=======
+.LandingPage-btn span {
+    position: absolute;
+>>>>>>> c83ab30d45a6693c9606a69de5c8e69b48394b60
     color:white;
     font-weight:bold;
 }

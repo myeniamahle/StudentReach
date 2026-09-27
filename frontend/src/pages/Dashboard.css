@@ -5,12 +5,13 @@
   width: 100%;
   min-width: 0;
   background: #ffffff;
-  display: flex;
+  display:grid;
   flex-direction: column;
   align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  box-sizing: border-box;
   padding-bottom: clamp(24px, 6vw, 48px);
+  border-color:black;
+  border-style:solid;
 }
 
 /* Navbar */
@@ -25,6 +26,8 @@
   padding: clamp(12px, 4vw, 16px);
   box-sizing: border-box;
   border-bottom: 1px solid #f1f2f4;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-navbar-brand {
@@ -32,6 +35,8 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
+  border-color:rgb(102, 58, 58);
+  border-style:solid;
 }
 
 .Dashboard-navbar-actions {
@@ -75,6 +80,7 @@
   color: #111827;
   cursor: pointer;
   flex-shrink: 0;
+  
 }
 
 .Dashboard-role-chevron {
@@ -90,6 +96,8 @@
   margin: 16px 0;
   overflow: visible;
   box-sizing: border-box;
+  border-color:rgb(158, 11, 11);
+  border-style:solid;
 }
 
 .Dashboard-hero-mesh {
@@ -99,16 +107,20 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  border-color:rgb(70, 247, 0);
+  border-style:solid;
 }
 
 .Dashboard-hero-content {
   position: relative;
   z-index: 1;
-  max-width: 420px;
-  margin: 0 auto;
+  width:100%;
+  margin: 0 ;
   padding: clamp(18px, 5vw, 24px) clamp(16px, 5vw, 24px) clamp(20px, 6vw, 28px);
   color: #ffffff;
   box-sizing: border-box;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-hero-top-row {
@@ -118,6 +130,8 @@
   gap: 12px;
   margin-bottom: 16px;
   flex-wrap: wrap;
+  border-color:rgb(235, 167, 167);
+  border-style:solid;
 }
 
 .Dashboard-hero-campus {
@@ -130,12 +144,16 @@
   color: rgba(255, 255, 255, 0.9);
   min-width: 0;
   flex: 1 1 200px;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-hero-campus span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-hero-campus-icon {
@@ -143,6 +161,8 @@
   height: 14px;
   flex-shrink: 0;
   filter: brightness(0) invert(1);
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-hero-student-id {
@@ -151,6 +171,8 @@
   color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
   flex-shrink: 0;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-hero-greeting {
@@ -158,18 +180,24 @@
   font-weight: 800;
   margin: 0 0 4px;
   overflow-wrap: break-word;
+  border-color:rgb(233, 33, 33);
+  border-style:solid;
 }
 
 .Dashboard-hero-faculty {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.85);
   margin: 0 0 20px;
+  border-color:rgb(238, 189, 189);
+  border-style:solid;
 }
 
 .Dashboard-hero-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-stat-card {
@@ -211,10 +239,14 @@
   margin-bottom: 20px;
   overflow-x: auto;
   scrollbar-width: none;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-tab-row::-webkit-scrollbar {
   display: none;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-tab {
@@ -231,6 +263,8 @@
   padding: 10px 14px;
   cursor: pointer;
   flex-shrink: 0;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-tab--active {
@@ -248,16 +282,20 @@
 .Dashboard-card {
   width: 100%;
   max-width: 420px;
-  box-sizing: border-box;
   padding: 0 16px 20px;
+  border-color:black;
+  border-style:solid;
 }
 
 .Dashboard-card-header {
-  display: flex;
+  display:block;
+  width:100%;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  border-color:black;
+  border-style:solid;
+  margin:0%;
 }
 
 .Dashboard-card-title {
@@ -265,6 +303,7 @@
   font-weight: 700;
   color: #111827;
   margin: 0 0 2px;
+  
 }
 
 .Dashboard-card-subtitle {
@@ -301,6 +340,7 @@
   min-width: 0;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  max-width:100%;
 }
 
 .Dashboard-mood-button {
@@ -314,6 +354,7 @@
   padding: clamp(10px, 3vw, 14px) 4px;
   cursor: pointer;
   min-width: 0;
+  max-width:100%;
 }
 
 .Dashboard-mood-button:hover {
