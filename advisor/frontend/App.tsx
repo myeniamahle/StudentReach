@@ -6,59 +6,30 @@ import { Dashboard } from './pages/Dashboard';
 import { FlagDetail } from './pages/FlagDetail';
 import { MessagePreview } from './pages/MessagePreview';
 import { FollowUp } from './pages/FollowUp';
+import { LecturerDashboard } from './pages/LecturerDashboard';
+import { StudentDetail } from './pages/StudentDetail';
+import { ReportConcern } from './pages/ReportConcern';
 import { ProtectedRoute } from './auth/ProtectedRoute';
-import { Resource } from './pages/Resource';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public route */}
+        {/* Public */}
         <Route path="/login" element={<LoginPage />} />
 
-        {/* Protected advisor routes */}
-        <Route
-          path="/advisor/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/advisor/flag/:id"
-          element={
-            <ProtectedRoute>
-              <FlagDetail />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/advisor/message-preview/:id"
-          element={
-            <ProtectedRoute>
-              <MessagePreview />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/advisor/follow-up/:id"
-          element={
-            <ProtectedRoute>
-              <FollowUp />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-  path="/advisor/resource/:id/:option"
-  element={
-    <ProtectedRoute>
-      <Resource />
-    </ProtectedRoute>
-  }
-/>
+        {/* Advisor routes */}
+        <Route path="/advisor/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/advisor/flag/:id" element={<ProtectedRoute><FlagDetail /></ProtectedRoute>} />
+        <Route path="/advisor/message-preview/:id" element={<ProtectedRoute><MessagePreview /></ProtectedRoute>} />
+        <Route path="/advisor/follow-up/:id" element={<ProtectedRoute><FollowUp /></ProtectedRoute>} />
 
-        {/* Default redirect */}
+        {/* Lecturer routes */}
+        <Route path="/lecturer/dashboard" element={<ProtectedRoute><LecturerDashboard /></ProtectedRoute>} />
+        <Route path="/lecturer/student/:id" element={<ProtectedRoute><StudentDetail /></ProtectedRoute>} />
+        <Route path="/lecturer/report-concern/:id" element={<ProtectedRoute><ReportConcern /></ProtectedRoute>} />
+
+        {/* Default */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>

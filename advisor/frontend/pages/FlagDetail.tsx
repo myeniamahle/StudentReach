@@ -59,7 +59,9 @@ export function FlagDetail() {
       <p><strong>Rule:</strong> {flag.rule_code}</p>
       <p><strong>Reason:</strong> {flag.reason}</p>
       <p><strong>Priority:</strong> {flag.priority.toUpperCase()}</p>
-      <p><strong>Detected:</strong> {new Date(flag.detected_at).toLocaleString()}</p>
+      {flag.rule_code === 'LECTURER_REPORT' && (
+  <p><strong>Source:</strong> Reported by a lecturer</p>
+)}
       {flag.observed_value && (
         <p><strong>Observed:</strong> {flag.observed_value} (threshold {flag.threshold_value})</p>
       )}

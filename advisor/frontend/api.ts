@@ -44,3 +44,26 @@ export async function resolveFlag(id: string) {
   const response = await api.post(`/flags/${id}/resolve`);
   return response.data;
 }
+
+// --- Lecturer ---
+
+export async function getStudentsInProgramme(programme: string) {
+  const response = await api.get(`/lecturer/students/${encodeURIComponent(programme)}`);
+  return response.data;
+}
+
+export async function getStudentDetail(studentId: string) {
+  const response = await api.get(`/lecturer/student/${studentId}`);
+  return response.data;
+}
+
+export async function reportConcern(payload: {
+  student_id: string;
+  category: string;
+  indicators: string[];
+  urgency: string;
+  notes: string;
+}) {
+  const response = await api.post('/lecturer/report-concern', payload);
+  return response.data;
+}

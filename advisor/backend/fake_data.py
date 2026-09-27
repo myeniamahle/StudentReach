@@ -3,7 +3,10 @@
 ADVISORS = [
     {"id": 1, "email": "amahle@demo.com", "password": "demo123", "role": "advisor"},
     {"id": 2, "email": "admin@demo.com", "password": "admin123", "role": "admin"},
+    {"id": 3, "email": "lecturer@demo.com", "password": "demo123", "role": "lecturer", "programme": "Computer Science"},
+    {"id": 4, "email": "lecturer2@demo.com", "password": "demo123", "role": "lecturer", "programme": "Data Science"},
 ]
+
 
 # Temporary flags — Nokwanda's detection module will replace this later
 FLAGS = [
